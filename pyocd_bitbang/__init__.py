@@ -36,5 +36,6 @@
 """
 
 from pyocd_bitbang.bitbang_probe import *
+from pyocd_bitbang.bitbang_probe_backdoor import *
 
 from ._version import version as __version__

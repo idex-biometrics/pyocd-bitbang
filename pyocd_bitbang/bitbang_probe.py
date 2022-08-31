@@ -211,12 +211,22 @@ class RemoteBitbangProbe(DebugProbe):
 
     def __init__(self, unique_id):
         hostname,port = self._extract_address(unique_id)
+        self._hostname = hostname
+        self._port = port
         self._uid = f"remote_bitbang:{hostname}{port}"
         self._bitbanger = BitBanger(hostname,port)
         self._open = False
         self._retries = 5
         super().__init__()
 
+    @property
+    def hostname(self) -> str:
+        return self._hostname
+
+    @property
+    def port(self) -> int:
+        return int(self._port)
+        
     @property
     def description(self) -> str:
         return "A remote bitbang probe"
