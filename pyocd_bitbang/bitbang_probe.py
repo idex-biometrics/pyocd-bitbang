@@ -99,6 +99,7 @@ class BitBanger():
         self._port = port
         # TCP socket
         self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self._sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
         # Receive buffer
         self._buf = bytearray()
 
